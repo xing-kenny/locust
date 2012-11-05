@@ -1,2 +1,5 @@
 language: java
 script: mvn test
+notifications:
+  email:
+    - xing_kenny@yahoo.com.cn
