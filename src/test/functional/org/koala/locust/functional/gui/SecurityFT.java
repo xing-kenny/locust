@@ -20,11 +20,12 @@ public class SecurityFT extends BaseSeleniumTestCase {
 	public void anonymousUserAccessSystem() {
 		//访问退出登录页面,退出之前的登录
 		s.open("/logout");
-		assertEquals("locust示例:登录页", s.getTitle());
+		assertEquals("Locust", s.getTitle());
+        assertTrue("没有成功消息", s.isTextPresent("PLEASE TYPE IN ACCOUNT AND PWD!"));
 
 		//访问任意页面会跳转到登录界面
 		s.open("/task");
-		assertEquals("locust示例:登录页", s.getTitle());
+        assertTrue("没有成功消息", s.isTextPresent("PLEASE TYPE IN ACCOUNT AND PWD!"));
 	}
 
 	/**
@@ -34,7 +35,7 @@ public class SecurityFT extends BaseSeleniumTestCase {
 	public void userTryToManageUsers() {
 		loginAsUserIfNecessary();
 		s.open("/admin/user");
-		assertEquals("Error 401 Unauthorized", s.getTitle());
+        assertTrue("没有成功消息", s.isTextPresent("PLEASE TYPE IN ACCOUNT AND PWD!"));
 	}
 
 	/**
@@ -48,7 +49,6 @@ public class SecurityFT extends BaseSeleniumTestCase {
 		s.check(By.name("rememberMe"));
 		s.click(By.id("submit_btn"));
 
-		assertEquals("locust示例:登录页", s.getTitle());
-		assertTrue(s.isTextPresent("登录失败，请重试."));
+        assertTrue("没有成功消息", s.isTextPresent("PLEASE TYPE IN ACCOUNT AND PWD!"));
 	}
 }

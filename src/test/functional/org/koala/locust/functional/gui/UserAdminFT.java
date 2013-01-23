@@ -32,7 +32,7 @@ public class UserAdminFT extends BaseSeleniumTestCase {
 	@Test
 	@Category(Smoke.class)
 	public void viewUserList() {
-		s.open("/admin/user");
+		s.open("/admin/user/list");
 		WebElement table = s.findElement(By.id("contentTable"));
 		assertEquals("admin", s.getTable(table, 0, 0));
 		assertEquals("user", s.getTable(table, 1, 0));
@@ -44,6 +44,8 @@ public class UserAdminFT extends BaseSeleniumTestCase {
 		s.type(By.id("name"), "Kevin");
 		s.type(By.id("plainPassword"), "user2");
 		s.type(By.id("confirmPassword"), "user2");
+        s.type(By.id("phoneNo"), "1130");
+        s.type(By.id("email"), "1@3.com");
 		s.click(By.id("submit_btn"));
 
 		assertTrue("没有成功消息", s.isTextPresent("更新用户user成功"));

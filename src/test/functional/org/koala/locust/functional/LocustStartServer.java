@@ -10,9 +10,9 @@ import org.springside.modules.test.jetty.JettyFactory;
  */
 public class LocustStartServer {
 
-	public static final int PORT = 8080;
+	public static final int PORT = 8010;
 	public static final String CONTEXT = "/locust";
-	public static final String BASE_URL = "http://localhost:8080/locust";
+	public static final String BASE_URL = "http://localhost:8010/locust";
 	public static final String[] TLD_JAR_NAMES = new String[] { "sitemesh", "spring-webmvc", "shiro-web",
 			"springside-core" };
 
